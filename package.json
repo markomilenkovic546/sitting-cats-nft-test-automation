@@ -1,0 +1,17 @@
+{
+  "name": "sitting-cats-minting-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "synpress": "synpress run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@synthetixio/synpress": "^3.5.1",
+    "cypress": "^12.8.1"
+  }
+}
