@@ -5,7 +5,7 @@ class MintingPage {
 
   header = {
     connectWalletBtn: () => cy.get("button").contains("Connect Wallet"),
-    disconnectWalletBtn: () => cy.get('[data-cy="btn-account"]'),
+    accountBtn: () => cy.get('[data-cy="btn-account"]'),
     numberOfNftsBtnFigure: () => cy.get('[data-cy="btn-account"] figure span')
 
   };
@@ -64,8 +64,8 @@ class MintingPage {
     this.header.connectWalletBtn().click();
   }
 
-  clickOnDisconnectWalletButton() {
-    this.header.disconnectWalletBtn().click();
+  clickOnAccountButton() {
+    this.header.accountBtn().click();
   }
 
 
