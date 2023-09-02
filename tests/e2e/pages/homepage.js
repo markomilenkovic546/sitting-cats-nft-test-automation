@@ -25,6 +25,7 @@ class MintingPage {
 
   balanceCheckModal = {
     modal: () => cy.get('[data-cy="notice-faucet"]'),
+    recheckBtn: () => cy.get('[data-cy="btn-recheck-balance"]')
     
   }
 
