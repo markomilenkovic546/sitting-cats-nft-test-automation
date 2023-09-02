@@ -8,4 +8,6 @@ it("Import MetaMask accounts", function () {
   cy.switchMetamaskAccount('account 1').then(switched => {
     expect(switched).to.be.true;
   });
+  
+ cy.log('123')
   });

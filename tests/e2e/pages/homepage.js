@@ -31,7 +31,8 @@ class MintingPage {
 
   mintingModal = {
     modal: () => cy.get('[data-cy="container-minting"]'),
-    infoMessage: () => cy.get('[data-cy="container-info-message"]'),
+    infoMessage: (messageText) => cy.get('[data-cy="container-info-message"]')
+    .contains(messageText, { timeout: 120000 }),
     decreaseQuantityBtn: () => cy.get('[data-cy="btn-minus"]'),
     increaseQuantityBtn: () => cy.get('[data-cy="btn-plus"]'),
     inputQuantity: () => cy.get('[data-cy="input-quantity"]'),

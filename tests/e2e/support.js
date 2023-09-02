@@ -6,3 +6,12 @@ Cypress.Commands.add('formatAddress', (address) => {
     const shortenedAddress = `${firstPart}...${lastPart}`;
     return shortenedAddress;
  })
+
+
+ Cypress.Commands.add('getAllowedNumberToMint', (text) => {
+    const numbers = text.match(/\d+/g); 
+    const firstNumber = numbers[0];
+    const allowedNumber = 7 - Number(firstNumber)
+    return allowedNumber
+ })
+

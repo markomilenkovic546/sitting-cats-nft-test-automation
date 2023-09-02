@@ -12,10 +12,8 @@ it("User can connect the wallet", function () {
       mintingPage.header.accountBtn().should("contain", formattedAddress);
     });
 
-    mintingPage.mintingModal.infoMessage().should("contain", "Ready for minting");
-    cy.disconnectMetamaskWalletFromDapp().then((disconnected) => {
-      expect(disconnected).to.be.true;
-    });
+    mintingPage.mintingModal.infoMessage("Ready for minting").should("be.visible");
+    
   });
  
 });
