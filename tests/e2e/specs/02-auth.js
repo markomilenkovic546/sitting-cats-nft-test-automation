@@ -2,6 +2,7 @@ import mintingPage from "../pages/homepage";
 
 beforeEach(function () {
   cy.visit("/");
+ 
 });
 it("User can connect the wallet", function () {
   mintingPage.clickOnConnectWalletButton();
