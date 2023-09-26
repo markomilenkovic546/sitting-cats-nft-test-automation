@@ -31,20 +31,22 @@ class MintingPage {
 
   mintingModal = {
     modal: () => cy.get('[data-cy="container-minting"]'),
-    infoMessage: () => cy.get('[data-cy="container-info-message"]'),
+    infoMessage: (messageText) => cy.get('[data-cy="container-info-message"]')
+    .contains(messageText, { timeout: 120000 }),
     decreaseQuantityBtn: () => cy.get('[data-cy="btn-minus"]'),
     increaseQuantityBtn: () => cy.get('[data-cy="btn-plus"]'),
     inputQuantity: () => cy.get('[data-cy="input-quantity"]'),
     mintBtn: () => cy.get('[data-cy="btn-mint"]'),
     nftPrice: () => cy.get('[data-cy="price-total"]'),
-    nftBalancepPerPhase: () => cy.get('[data-cy="nft-balance-per-phase"]')
+    nftBalancepPerPhase: () => cy.get('[data-cy="nft-balance-per-phase"]'),
+    claimedNftBtn: ()=> cy.get('[data-cy="btn-claimed-nft"]')
     
   }
 
   nftCardModal = {
     modal: () => cy.get('[data-cy="container-modal-claimed"]'),
     closeModalBtn: () => cy.get('[data-cy="btn-modal-close"]'),
-    nftNumber: () => cy.get('[data-cy="href-nft"]'),
+    nftId: () => cy.get('[data-cy="href-nft"]'),
     nftCardTitle: () => cy.get('[data-cy="container-modal-claimed"] h4'),
     nftCardDescription: () => cy.get('[data-cy="container-modal-claimed"] p'),
     nftImage: () => cy.get('[data-cy="container-modal-claimed"] figure img'),
@@ -103,6 +105,9 @@ class MintingPage {
 
   clickOnMintButton() {
     this.mintingModal.mintBtn().click();
+  }
+  clickOnclaimedNftButton() {
+    this.mintingModal.claimedNftBtn().click();
   }
 
 
