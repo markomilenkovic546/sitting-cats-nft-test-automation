@@ -39,3 +39,21 @@ async function getNftOwner(nftId) {
  });
  
 
+ async function getTotalMintedValue() {
+   const contractAddress = Cypress.env("scAddress");
+   const provider = new ethers.providers.WebSocketProvider(Cypress.env("providerURL"))
+   const contract = new ethers.Contract(contractAddress, abi, provider);
+   try {
+     const totalMintedValue = await contract.totalMinted();
+     const bigNumber = ethers.BigNumber.from(totalMintedValue);
+     const stringValue = bigNumber.toString();
+     return stringValue; // Return the string value
+   } catch (error) {
+     console.error(error);
+     return null; // Handle the error and return an appropriate value
+   }
+ }
+
+ Cypress.Commands.add('getTotalClaimedValue', (nftId) => {
+   return getTotalMintedValue();
+ });
