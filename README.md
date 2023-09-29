@@ -1,11 +1,11 @@
 ## Introduction
 
-Sitting Cats NFT: [sitting-cats-nft.vercel.app](https://sitting-cats-nft.vercel.app/)
+**Sitting Cats NFT**: [sitting-cats-nft.vercel.app](https://sitting-cats-nft.vercel.app/)
 
-Smart Contract Address: 0x6c43832CE6604a3884d2f2cf18501beE9555d58B
+**Smart Contract Address**: 0x6c43832CE6604a3884d2f2cf18501beE9555d58B
 
 
-The idea behind work on this project was to create the automation testing concept of the "Sitting Cats NFT" minting application by leveraging the "Synpress" testing framework which is based on Cypress with support for MetaMask. 
+The idea behind working on this project was to create an automation testing concept for the 'Sitting Cats NFT' minting application by utilizing the **Synpress** testing framework which is based on Cypress with support for MetaMask. 
 Additionally, the ethers.js library was utilized as a dependency for the purpose of calling functions on the smart contract in order to verify the communication of the React application with the smart contract.
 
 The framework is designed in the Page Object Model (POM). Also, in the `support.js` file, custom commands and custom utility functions are created as an additional abstraction layer.
