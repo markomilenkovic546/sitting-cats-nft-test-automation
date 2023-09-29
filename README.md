@@ -1,5 +1,6 @@
 ## Introduction
 Sitting Cats NFT: [sitting-cats-nft.vercel.app](https://sitting-cats-nft.vercel.app/)
+
 Smart Contract: [thirdweb's NFT Drop contract](https://thirdweb.com/thirdweb.eth/DropERC721)
 
 The idea behind work on this project was to create the automation testing concept of the "Sitting Cats NFT" minting application by leveraging the "Synpress" testing framework which is based on Cypress with support for MetaMask. 
