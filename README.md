@@ -17,4 +17,12 @@ To run the project locally, follow these steps:
 **Note:** In order to isolate test cases, tests are executing using multiple MetaMask accounts. So that requires setting the specific balance on every account. 
 You must create 11 accounts, and make sure that every account, except account 2, has enough Polygon Mumbai Matics to mint several NFTs and pay the gas fee.
 
+## Available Scripts
 
+- To run individual test suites:: `npm run synpress`
+- To run individual test suites/spec files:
+  - `npm run auth`
+  - `npm run balance-checker`
+  - `npm run minting-logic`
+  - `npm run collection-showcase`
+ 
