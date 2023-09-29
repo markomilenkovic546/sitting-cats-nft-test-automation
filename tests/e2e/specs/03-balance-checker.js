@@ -1,8 +1,24 @@
 import mintingPage from "../pages/homepage";
 
-beforeEach(function () {
-  cy.visit("/");
-});
+describe("Tests related to 'Balance-Checker' feature'", () => {
+  beforeEach(function () {
+    cy.visit("/");
+    cy.getMetamaskWalletAddress().then((address) => {
+      // If Account 1 is not connected switch to Account 1
+      if (Cypress.env("account1") != address) {
+        cy.switchMetamaskAccount("account 1").then((switched) => {
+          expect(switched).to.be.true;
+        });
+      }
+    });
+  });
+  
+  afterEach(function () {
+    cy.visit("/");
+    cy.disconnectMetamaskWalletFromDapp().then((disconnected) => {
+      expect(disconnected).to.be.true;
+    });
+  });
 
 it("The 'Balance Check' modal shows up when the user has insufficient funds on the account", function () {
   cy.switchMetamaskAccount("account 2").then((switched) => {
@@ -11,12 +27,6 @@ it("The 'Balance Check' modal shows up when the user has insufficient funds on t
   mintingPage.clickOnConnectWalletButton();
   cy.acceptMetamaskAccess();
   mintingPage.balanceCheckModal.modal().should("contain", "You're low on MATIC!");
-  cy.disconnectMetamaskWalletFromDapp().then((disconnected) => {
-    expect(disconnected).to.be.true;
-  });
-  cy.switchMetamaskAccount("account 1").then((switched) => {
-    expect(switched).to.be.true;
-  });
 });
 
 it("When user recheck the balance with insufficient funds, the 'Balance Check' modal is still displayed", function () {
@@ -29,12 +39,7 @@ it("When user recheck the balance with insufficient funds, the 'Balance Check' m
   mintingPage.balanceCheckModal.recheckBtn().should("have.attr", "disabled");
   mintingPage.balanceCheckModal.recheckBtn().should("not.have.attr", "disabled", { timeout: 20000 });
   mintingPage.balanceCheckModal.modal().should("contain", "You're low on MATIC!");
-  cy.disconnectMetamaskWalletFromDapp().then((disconnected) => {
-    expect(disconnected).to.be.true;
-  });
-  cy.switchMetamaskAccount("account 1").then((switched) => {
-    expect(switched).to.be.true;
-  });
+  
 });
 
 it("The 'Minting Modal' is disabled when the user has insufficient funds on the account", function () {
@@ -45,12 +50,6 @@ it("The 'Minting Modal' is disabled when the user has insufficient funds on the 
   cy.acceptMetamaskAccess();
   mintingPage.balanceCheckModal.modal().should("contain", "You're low on MATIC!");
   mintingPage.mintingModal.mintBtn().should("have.attr", "disabled");
-  cy.disconnectMetamaskWalletFromDapp().then((disconnected) => {
-    expect(disconnected).to.be.true;
-  });
-  cy.switchMetamaskAccount("account 1").then((switched) => {
-    expect(switched).to.be.true;
-  });
 });
 
 it("The 'Minting Modal' is still disabled after the user's recheck of the balance with insufficient funds", function () {
@@ -64,12 +63,6 @@ it("The 'Minting Modal' is still disabled after the user's recheck of the balanc
   mintingPage.balanceCheckModal.recheckBtn().should("not.have.attr", "disabled", { timeout: 20000 });
   mintingPage.balanceCheckModal.modal().should("contain", "You're low on MATIC!");
   mintingPage.mintingModal.mintBtn().should("have.attr", "disabled");
-  cy.disconnectMetamaskWalletFromDapp().then((disconnected) => {
-    expect(disconnected).to.be.true;
-  });
-  cy.switchMetamaskAccount("account 1").then((switched) => {
-    expect(switched).to.be.true;
-  });
 });
 
 it("User can navigate to the faucet 1 website", function () {
@@ -85,13 +78,6 @@ it("User can navigate to the faucet 1 website", function () {
     cy.get("body").contains("faucet.polygon.technology");
     cy.url().should("eq", "https://faucet.polygon.technology/");
   });
-
-  cy.disconnectMetamaskWalletFromDapp().then((disconnected) => {
-    expect(disconnected).to.be.true;
-  });
-  cy.switchMetamaskAccount("account 1").then((switched) => {
-    expect(switched).to.be.true;
-  });
 });
 
 it("User can navigate to the faucet 2 website", function () {
@@ -105,12 +91,6 @@ it("User can navigate to the faucet 2 website", function () {
   mintingPage.balanceCheckModal.modal().find("a").eq(1).click();
   cy.origin("https://mumbaifaucet.com/", () => {
     cy.url().should("eq", "https://mumbaifaucet.com/");
-  });
-  cy.disconnectMetamaskWalletFromDapp().then((disconnected) => {
-    expect(disconnected).to.be.true;
-  });
-  cy.switchMetamaskAccount("account 1").then((switched) => {
-    expect(switched).to.be.true;
   });
 });
 
@@ -126,11 +106,5 @@ it("User can navigate to the faucet 3 website", function () {
   cy.origin("https://testmatic.vercel.app/", () => {
     cy.url().should("eq", "https://testmatic.vercel.app/");
   });
-
-  cy.disconnectMetamaskWalletFromDapp().then((disconnected) => {
-    expect(disconnected).to.be.true;
-  });
-  cy.switchMetamaskAccount("account 1").then((switched) => {
-    expect(switched).to.be.true;
-  });
 });
+})

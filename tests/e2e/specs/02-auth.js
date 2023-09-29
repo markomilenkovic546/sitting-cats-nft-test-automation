@@ -1,5 +1,5 @@
 import mintingPage from "../pages/homepage";
-
+describe("Tests related to Auth", () => {
 beforeEach(function () {
   cy.visit("/");
   cy.getMetamaskWalletAddress().then((address) => {
@@ -63,7 +63,7 @@ it.skip("User cannot connect the wallet if it's not connected to correct network
 
     mintingPage.mintingModal.infoMessage("Ready for minting").should("be.visible");
   });
-  cy.wait(100000)
+  
 });
 
 it("Application behave as expected when a user change the network while wallet is connected", function () {
@@ -84,3 +84,4 @@ it("Application behave as expected when a user change the network while wallet i
   });
   mintingPage.mintingModal.infoMessage("Ready for minting").should("be.visible");
 });
+})

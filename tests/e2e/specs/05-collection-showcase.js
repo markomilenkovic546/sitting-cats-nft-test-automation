@@ -1,7 +1,7 @@
 import mintingPage from "../pages/homepage";
 import account9NftCollection from "../fixtures/account-9-nft-collection.json";
 const nftCollection = account9NftCollection;
-
+describe("Tests related to 'Collection-Showcase' feature'", () => {
 beforeEach(function () {
   cy.visit("/");
   cy.getMetamaskWalletAddress().then((address) => {
@@ -20,6 +20,8 @@ afterEach(function () {
     expect(disconnected).to.be.true;
   });
 });
+
+
 
 it("User can open a 'NFT Show case' modal", function () {
   mintingPage.clickOnConnectWalletButton();
@@ -68,7 +70,7 @@ it("When user opens 'NFT Showcase' modal, latest NFT card is selected by default
   cy.wait(50000);
 });
 
-it.only("When a user select the NFT, correct card is displayed", function () {
+it("When a user select the NFT, correct card is displayed", function () {
   cy.switchMetamaskAccount("account 9").then((switched) => {
     expect(switched).to.be.true;
   });
@@ -87,3 +89,20 @@ it.only("When a user select the NFT, correct card is displayed", function () {
     mintingPage.showcaseModal.nftCardDescription().should("have.text", nftCollection[i].description);
   }
 });
+
+it.only("User can open the 'NFT Showcase' modal from the 'NFT Card' modal ", function () {
+  cy.switchMetamaskAccount("account 3").then((switched) => {
+    expect(switched).to.be.true;
+  });
+    mintingPage.clickOnConnectWalletButton();
+    cy.acceptMetamaskAccess();
+    mintingPage.mintingModal.infoMessage("Ready for minting").should("be.visible");
+    mintingPage.clickOnMintButton();
+    mintingPage.mintingModal.infoMessage("Please confirm transaction in your wallet to continue.").should("be.visible");
+    cy.confirmMetamaskTransaction();
+    mintingPage.mintingModal.infoMessage("NFT successfully claimed. You can continue minting.").should("be.visible");
+    mintingPage.clickOnclaimedNftButton()
+    mintingPage.clickOnNftGalleryButton()
+    mintingPage.showcaseModal.showcaseModal().find("h3").contains("Your NFT Collection");
+  });
+})

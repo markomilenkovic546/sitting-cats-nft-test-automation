@@ -1,5 +1,6 @@
 import mintingPage from "../pages/homepage";
 
+describe("Tests related to minting logic", () => {
 beforeEach(function () {
   cy.visit("/");
   cy.getMetamaskWalletAddress().then((address) => {
@@ -290,7 +291,7 @@ it("User can mint the maximum allowed number of NFTs", function () {
 });
 
 it.skip("User cannot mint more than maximum allowed number of NFTs to mint", function () {
-  cy.switchMetamaskAccount("account 7").then((switched) => {
+  cy.switchMetamaskAccount("account 10").then((switched) => {
     expect(switched).to.be.true;
   });
   mintingPage.clickOnConnectWalletButton();
@@ -352,7 +353,7 @@ it("The 'Number of claimed NFTs by user' info updates once the user claims the N
   mintingPage.mintingModal.nftBalancepPerPhase().should("contain", `1 of ${Cypress.env("nftClaimLimit")} NFT claimed`);
 });
 
-it("Total claimed NFTs info update correctly once the user mint the NFT", function () {
+it("The 'Total claimed NFTs' info update correctly once the user mint the NFT", function () {
   cy.switchMetamaskAccount("account 3").then((switched) => {
     expect(switched).to.be.true;
   });
@@ -366,9 +367,43 @@ it("Total claimed NFTs info update correctly once the user mint the NFT", functi
     mintingPage.mintingModal.infoMessage("Please confirm transaction in your wallet to continue.").should("be.visible");
     cy.confirmMetamaskTransaction();
     mintingPage.mintingModal.infoMessage("NFT successfully claimed. You can continue minting.").should("be.visible");
-    cy.get("p").contains(`Claiming an NFT is like putting a digital trophy on your virtual shelf. Total claimed NFTs: ${totalClaimed + 1}`);
+    cy.get("p").contains(
+      `Claiming an NFT is like putting a digital trophy on your virtual shelf. Total claimed NFTs: ${totalClaimed + 1}`
+    );
   });
-  
+
+})
+
+it("The 'Total claimed NFTs by user' info from 'Profile' button updates correctly once the user mint the NFT", function () {
+  cy.switchMetamaskAccount("account 3").then((switched) => {
+    expect(switched).to.be.true;
+  });
+  cy.getTotalClaimedValue().then((totalClaimedValue) => {
+    const totalClaimed = Number(totalClaimedValue);
+    cy.log(totalClaimed);
+    mintingPage.clickOnConnectWalletButton();
+    cy.acceptMetamaskAccess();
+    mintingPage.mintingModal.infoMessage("Ready for minting").should("be.visible");
+    // Store the current value of minted NFTs by connected address
+    mintingPage.header.numberOfNftsBtnFigure().invoke("text") 
+    .then((numberOfNfts) => {
+      // Click on the Mint button
+    mintingPage.clickOnMintButton();
+    mintingPage.mintingModal
+      .infoMessage("Please confirm transaction in your wallet to continue.")
+      .should("be.visible");
+      // Confirm transaction
+    cy.confirmMetamaskTransaction();
+    mintingPage.mintingModal.infoMessage("NFT successfully claimed. You can continue minting.").should("be.visible");
+    // Store the value of minted NFTs by connected address once the minting process is finished 
+    mintingPage.header.numberOfNftsBtnFigure().invoke("text").then((numberOfNftsAfterMinting) => { 
+     const numberOfNFTsBeforeMinting = Number(numberOfNfts)
+     const numberOfNFTsAfterMinting = Number(numberOfNftsAfterMinting)
+     // Verify that 'Total claimed NFTs by user' info from 'Profile' button us updated
+     expect(numberOfNFTsAfterMinting).to.equal(numberOfNFTsBeforeMinting + 1);
+    })
+    
+  });
 });
-
-
+})
+})
