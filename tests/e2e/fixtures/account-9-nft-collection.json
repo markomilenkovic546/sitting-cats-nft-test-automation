@@ -1,0 +1,52 @@
+[
+  {
+    "id": "252",
+    "name": "Peanut",
+    "description": "A petite force of nature, radiating energy and setting the world aglow with fiery enthusiasm.",
+    "image": "ipfs://QmNW9Y1ijnb53ftxqRRaPgStZMvzz6z6LffWHr6bQnz31E",
+    "background_color": "F3E0E0"
+  },
+
+  {
+    "id": "253",
+    "name": "Mia",
+    "description": "Effortlessly elegant, gracing surroundings with a tranquil aura and soothing presence.",
+    "image": "ipfs://QmNw14y9eaTFMww2S65gJjt2CmMF8Ak3gLXmr3pA26ejLg",
+    "background_color": "CEECCD"
+  },
+  {
+    "id": "254",
+    "name": "Misty",
+    "description": "A gentle soul like morning mist, casting a serene ambiance wherever it roams.",
+    "image": "ipfs://QmanyYZEXqfAwn1Yk2Wp1mJAJmEEsLHLkaQvZhPAMhMs79",
+    "background_color": "E3E0F6"
+  },
+  {
+    "id": "255",
+    "name": "Marley",
+    "description": "Full of boundless playfulness, turning every moment into a delightful game of joy.",
+    "image": "ipfs://QmSatbdsfEnbm1jrV6PjRG55rs5QHne8zeGRoj3L2uWpU6",
+    "background_color": "EBE8CF"
+  },
+  {
+    "id": "256",
+    "name": "Finn",
+    "description": "Fearless explorer, leading the way to new experiences with unwavering curiosity.",
+    "image": "ipfs://QmQeUFifM9MdFCA6PhgjVGf1Ayh4WawehGSX8KRDDqQ5dP",
+    "background_color": "ECE4DF"
+  },
+  {
+    "id": "257",
+    "name": "Luna",
+    "description": "Radiating an enchanting glow, lighting up the night and hearts with magical allure.",
+    "image": "ipfs://QmTtXLrSm9NhyDhYnLKJmXXyZxYnJjjZCrKxySmA33DP6t",
+    "background_color": "E8F7FF"
+  },
+  {
+    "id": "258",
+    "name": "Toby",
+    "description": "A loyal friend, providing unwavering companionship and comfort through all moments.",
+    "image": "ipfs://QmYQC1zoVQMJ2GJ1VeUTHpUDMXiPdzUFnw7Gnr2jX5LoEt",
+    "background_color": "D9D9D9"
+  }
+]

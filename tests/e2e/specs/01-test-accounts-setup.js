@@ -1,6 +1,6 @@
 it("Import MetaMask accounts", function () {
 
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 8; i++) {
     cy.createMetamaskAccount().then(created => {
         expect(created).to.be.true;
       });
