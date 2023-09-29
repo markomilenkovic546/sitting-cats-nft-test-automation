@@ -20,7 +20,7 @@ To run the project locally, follow these steps:
 4. Create a `cypress.env.json` file in the root directory (check `cypress.env.json` in the project root to see what needs to be included. You only have to change "account 1" value).
 
 **Note:** In order to isolate test cases, tests are executing using multiple MetaMask accounts. So that requires setting the specific balance on every account. 
-You must create 11 accounts, and make sure that every account, except account 2, has enough Polygon Mumbai Matics to mint several NFTs and pay the gas fee.
+You must create 11 accounts, and make sure that every account, except account 2 (which should have insufficient funds to mint), has enough Polygon Mumbai Matics to mint several NFTs and pay the gas fee.
 
 ## Available Scripts
 
