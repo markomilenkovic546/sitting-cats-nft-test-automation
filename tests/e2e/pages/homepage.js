@@ -11,13 +11,14 @@ class MintingPage {
   };
 
   showcaseModal = {
+    showcaseModal: () => cy.get('[data-cy="container-nft-gallery"]'),
     closeShowcaseModalBtn: () => cy.get('[data-cy="btn-modal-close"]'),
     disconnectBtn: () => cy.get('[data-cy="btn-disconnect"]'),
-    nftBtn: (nftHash) => cy.get(`["btn-nft-item-${nftHash}"]`),
+    nftBtn: (nftId) => cy.get(`[data-cy="btn-nft-item-${nftId}"]`),
     nftCard: () => cy.get('[data-cy="nft-card"]'),
     nftCardTitle: () => cy.get('[data-cy="nft-card"] h4'),
     nftCardDescription: () => cy.get('[data-cy="nft-card"] p'),
-    nftNumber: () => cy.get('[data-cy="href-nft"]'),
+    nftId: () => cy.get('[data-cy="href-nft"]'),
     nftImage: () => cy.get('[data-cy="nft-card"] figure img')
 
    
@@ -81,8 +82,8 @@ class MintingPage {
     this.showcaseModal.disconnectBtn().click();
   }
 
-  clickOnNftButton(nftHash) {
-    this.showcaseModal.nftBtn(nftHash).click();
+  clickOnNftButton(nftId) {
+    this.showcaseModal.nftBtn(nftId).click();
   }
 
 
