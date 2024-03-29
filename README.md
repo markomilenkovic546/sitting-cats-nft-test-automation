@@ -1,6 +1,6 @@
 ## Introduction
 
-The idea behind working on this project was to create an automation testing concept for the ['Sitting Cats NFT' minting application](https://github.com/danilo-89/sitting-cats-nft) developed by my friend and colleague [Danilo](https://www.linkedin.com/in/danilo-bozinovic/). The testing framework is created leveraging the **Synpress** testing framework which is based on Cypress with support for MetaMask. 
+The idea behind working on this project was to create an automation testing concept for the ['Sitting Cats NFT'](https://github.com/danilo-89/sitting-cats-nft) minting application developed by my friend and colleague [Danilo](https://www.linkedin.com/in/danilo-bozinovic/). The testing framework is created leveraging the **Synpress** testing framework which is based on Cypress with support for MetaMask. 
 Additionally, the **ethers.js** library was utilized as a dependency for the purpose of calling functions on the smart contract in order to verify the communication of the React application with the smart contract.
 
 The framework is designed in the Page Object Model (POM). Also, in the `support.js` file, custom commands and custom utility functions are created as an additional abstraction layer.
