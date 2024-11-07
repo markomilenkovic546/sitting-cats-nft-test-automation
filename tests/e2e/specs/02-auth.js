@@ -25,10 +25,12 @@ describe('Tests related to Auth', () => {
         cy.getMetamaskWalletAddress().then((address) => {
             cy.formatAddress(address).then((formattedAddress) => {
                 cy.log(formattedAddress);
-                mintingPage.header.accountBtn.should('contain', formattedAddress);
+                mintingPage.header.accountBtn().should('contain', formattedAddress);
             });
 
-            mintingPage.mintingModal.infoMessage('Ready for minting').should('be.visible');
+            mintingPage.mintingModal
+                .infoMessage('Ready for minting')
+                .should('be.visible');
         });
     });
 
@@ -37,7 +39,7 @@ describe('Tests related to Auth', () => {
         cy.acceptMetamaskAccess();
         mintingPage.clickOnAccountButton();
         mintingPage.clickOnDisconnectButton();
-        mintingPage.header.connectWalletBtn.should('contain', 'Connect Wallet');
+        mintingPage.header.connectWalletBtn().should('contain', 'Connect Wallet');
         cy.get('body').should('contain', 'Not connected');
         cy.disconnectMetamaskWalletFromDapp().then((disconnected) => {
             expect(disconnected).to.be.true;
@@ -51,16 +53,18 @@ describe('Tests related to Auth', () => {
 
         mintingPage.clickOnConnectWalletButton();
 
-        mintingPage.header.connectWalletBtn.should('contain', 'Connect Wallet');
+        mintingPage.header.connectWalletBtn().should('contain', 'Connect Wallet');
         cy.get('body').should('contain', 'Not connected');
         cy.allowMetamaskToSwitchNetwork();
         cy.getMetamaskWalletAddress().then((address) => {
             cy.formatAddress(address).then((formattedAddress) => {
                 cy.log(formattedAddress);
-                mintingPage.header.accountBtn.should('contain', formattedAddress);
+                mintingPage.header.accountBtn().should('contain', formattedAddress);
             });
 
-            mintingPage.mintingModal.infoMessage('Ready for minting').should('be.visible');
+            mintingPage.mintingModal
+                .infoMessage('Ready for minting')
+                .should('be.visible');
         });
     });
 
@@ -71,13 +75,13 @@ describe('Tests related to Auth', () => {
             expect(networkChanged).to.be.true;
         });
         cy.get('body').should('contain', 'Wrong network');
-        mintingPage.mintingModal.mintBtn.should('have.attr', 'disabled');
+        mintingPage.mintingModal.mintBtn().should('have.attr', 'disabled');
         cy.get('button').contains('Switch Network').click();
         cy.allowMetamaskToSwitchNetwork();
         cy.getMetamaskWalletAddress().then((address) => {
             cy.formatAddress(address).then((formattedAddress) => {
                 cy.log(formattedAddress);
-                mintingPage.header.accountBtn.should('contain', formattedAddress);
+                mintingPage.header.accountBtn().should('contain', formattedAddress);
             });
         });
         mintingPage.mintingModal.infoMessage('Ready for minting').should('be.visible');
