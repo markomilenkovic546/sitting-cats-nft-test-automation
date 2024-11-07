@@ -2,51 +2,49 @@ class MintingPage {
     /* ================ DOM ELEMENTS=======================*/
 
     header = {
-        connectWalletBtn: () => cy.get('button').contains('Connect Wallet'),
-        accountBtn: () => cy.get('[data-cy="btn-account"]'),
-        numberOfNftsBtnFigure: () => cy.get('[data-cy="btn-account"] figure span')
+        connectWalletBtn: cy.get('button').contains('Connect Wallet'),
+        accountBtn: cy.get('[data-cy="btn-account"]'),
+        numberOfNftsBtnFigure: cy.get('[data-cy="btn-account"] figure span')
     };
 
     showcaseModal = {
-        showcaseModal: () => cy.get('[data-cy="container-nft-gallery"]'),
-        closeShowcaseModalBtn: () => cy.get('[data-cy="btn-modal-close"]'),
-        disconnectBtn: () => cy.get('[data-cy="btn-disconnect"]'),
+        showcaseModal: '[data-cy="container-nft-gallery"]',
+        closeShowcaseModalBtn: cy.get('[data-cy="btn-modal-close"]'),
+        disconnectBtn: '[data-cy="btn-disconnect"]',
         nftBtn: (nftId) => cy.get(`[data-cy="btn-nft-item-${nftId}"]`),
-        nftCard: () => cy.get('[data-cy="nft-card"]'),
-        nftCardTitle: () => cy.get('[data-cy="nft-card"] h4'),
-        nftCardDescription: () => cy.get('[data-cy="nft-card"] p'),
-        nftId: () => cy.get('[data-cy="href-nft"]'),
-        nftImage: () => cy.get('[data-cy="nft-card"] figure img')
+        nftCard: cy.get('[data-cy="nft-card"]'),
+        nftCardTitle: cy.get('[data-cy="nft-card"] h4'),
+        nftCardDescription: cy.get('[data-cy="nft-card"] p'),
+        nftId: cy.get('[data-cy="href-nft"]'),
+        nftImage: cy.get('[data-cy="nft-card"] figure img')
     };
 
     balanceCheckModal = {
-        modal: () => cy.get('[data-cy="notice-faucet"]'),
-        recheckBtn: () => cy.get('[data-cy="btn-recheck-balance"]')
+        modal: cy.get('[data-cy="notice-faucet"]'),
+        recheckBtn: cy.get('[data-cy="btn-recheck-balance"]')
     };
 
     mintingModal = {
-        modal: () => cy.get('[data-cy="container-minting"]'),
+        modal: cy.get('[data-cy="container-minting"]'),
         infoMessage: (messageText) =>
-            cy
-                .get('[data-cy="container-info-message"]')
-                .contains(messageText, { timeout: 120000 }),
-        decreaseQuantityBtn: () => cy.get('[data-cy="btn-minus"]'),
-        increaseQuantityBtn: () => cy.get('[data-cy="btn-plus"]'),
-        inputQuantity: () => cy.get('[data-cy="input-quantity"]'),
-        mintBtn: () => cy.get('[data-cy="btn-mint"]'),
-        nftPrice: () => cy.get('[data-cy="price-total"]'),
-        nftBalancepPerPhase: () => cy.get('[data-cy="nft-balance-per-phase"]'),
-        claimedNftBtn: () => cy.get('[data-cy="btn-claimed-nft"]')
+            cy.get('[data-cy="container-info-message"]').contains(messageText, { timeout: 120000 }),
+        decreaseQuantityBtn: cy.get('[data-cy="btn-minus"]'),
+        increaseQuantityBtn: cy.get('[data-cy="btn-plus"]'),
+        inputQuantity: cy.get('[data-cy="input-quantity"]'),
+        mintBtn: cy.get('[data-cy="btn-mint"]'),
+        nftPrice: cy.get('[data-cy="price-total"]'),
+        nftBalancepPerPhase: cy.get('[data-cy="nft-balance-per-phase"]'),
+        claimedNftBtn: cy.get('[data-cy="btn-claimed-nft"]')
     };
 
     nftCardModal = {
-        modal: () => cy.get('[data-cy="container-modal-claimed"]'),
-        closeModalBtn: () => cy.get('[data-cy="btn-modal-close"]'),
-        nftId: () => cy.get('[data-cy="href-nft"]'),
-        nftCardTitle: () => cy.get('[data-cy="container-modal-claimed"] h4'),
-        nftCardDescription: () => cy.get('[data-cy="container-modal-claimed"] p'),
-        nftImage: () => cy.get('[data-cy="container-modal-claimed"] figure img'),
-        nftGalleryBtn: () => cy.get('[data-cy="btn-gallery-open"]')
+        modal: cy.get('[data-cy="container-modal-claimed"]'),
+        closeModalBtn: cy.get('[data-cy="btn-modal-close"]'),
+        nftId: cy.get('[data-cy="href-nft"]'),
+        nftCardTitle: cy.get('[data-cy="container-modal-claimed"] h4'),
+        nftCardDescription: cy.get('[data-cy="container-modal-claimed"] p'),
+        nftImage: cy.get('[data-cy="container-modal-claimed"] figure img'),
+        nftGalleryBtn: cy.get('[data-cy="btn-gallery-open"]')
     };
 
     /*======================== ACTIONS==============================*/
@@ -54,20 +52,20 @@ class MintingPage {
     // Header actions
 
     clickOnConnectWalletButton() {
-        this.header.connectWalletBtn().click();
+        this.header.connectWalletBtn.click();
     }
 
     clickOnAccountButton() {
-        this.header.accountBtn().click();
+        this.header.accountBtn.click();
     }
 
     // Showcase modal actions
     clickOnCloseShowcaseModalButton() {
-        this.showcaseModal.closeShowcaseModalBtn().click();
+        this.showcaseModal.closeShowcaseModalBtn.click();
     }
 
     clickOnDisconnectButton() {
-        this.showcaseModal.disconnectBtn().click();
+        this.showcaseModal.disconnectBtn.click();
     }
 
     clickOnNftButton(nftId) {
@@ -76,32 +74,32 @@ class MintingPage {
 
     // Balance Check Modal Actions
     clickOnRecheckButton() {
-        this.balanceCheckModal.recheckBtn().click();
+        this.balanceCheckModal.recheckBtn.click();
     }
 
     // Minting Modal Actions
     clickOnMinusButton() {
-        this.mintingModal.decreaseQuantityBtn().click();
+        this.mintingModal.decreaseQuantityBtn.click();
     }
 
     clickOnPlusButton() {
-        this.mintingModal.increaseQuantityBtn().click();
+        this.mintingModal.increaseQuantityBtn.click();
     }
 
     clickOnMintButton() {
-        this.mintingModal.mintBtn().click();
+        this.mintingModal.mintBtn.click();
     }
     clickOnclaimedNftButton() {
-        this.mintingModal.claimedNftBtn().click();
+        this.mintingModal.claimedNftBtn.click();
     }
 
     // NFT Card Modal Actions
     clickOnCloseModalButton() {
-        this.nftCardModal.closeModalBtn().click();
+        this.nftCardModal.closeModalBtn.click();
     }
 
     clickOnNftGalleryButton() {
-        this.nftCardModal.nftGalleryBtn().click();
+        this.nftCardModal.nftGalleryBtn.click();
     }
 }
 
