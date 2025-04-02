@@ -24,7 +24,7 @@ You must create 11 accounts, and make sure that every account, except account 2 
 
 ## Available Scripts
 
-- To run individual test suites: `npm run synpress`
+- To run all test suites: `npm run e2e`
 - To run individual test suites/spec files:
   - `npm run auth`
   - `npm run balance-checker`
