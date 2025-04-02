@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "synpress": "synpress run",
-    "auth": "synpress run --spec 'tests/e2e/specs/01-test-accounts-setup.js,tests/e2e/specs/02-auth.js'",
-    "balance-checker": "synpress run --spec 'tests/e2e/specs/01-test-accounts-setup.js,tests/e2e/specs/03-balance-checker.js'",
-    "minting-logic": "synpress run --spec 'tests/e2e/specs/01-test-accounts-setup.js,tests/e2e/specs/04-minting-logic.js'",
-    "collection-showcase": "synpress run --spec 'tests/e2e/specs/01-test-accounts-setup.js,tests/e2e/specs/05-collection-showcase.js'"
+    "e2e": "synpress run --spec 'tests/e2e/specs/test-accounts-setup.js,tests/e2e/specs/auth.js,tests/e2e/specs/balance-checker.js,tests/e2e/specs/minting-logic.js,tests/e2e/specs/collection-showcase.js'",
+    "accounts-setup": "synpress run --spec 'tests/e2e/specs/test-accounts-setup.js'",
+    "auth": "synpress run --spec 'tests/e2e/specs/test-accounts-setup.js,tests/e2e/specs/auth.js'",
+    "balance-checker": "synpress run --spec 'tests/e2e/specs/test-accounts-setup.js,tests/e2e/specs/balance-checker.js'",
+    "minting-logic": "synpress run --spec 'tests/e2e/specs/test-accounts-setup.js,tests/e2e/specs/minting-logic.js'",
+    "collection-showcase": "synpress run --spec 'tests/e2e/specs/test-accounts-setup.js,tests/e2e/specs/collection-showcase.js'"
   },
   "keywords": [],
   "author": "Marko Milenkovic",
